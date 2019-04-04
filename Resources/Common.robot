@@ -7,6 +7,9 @@ Library  Selenium2Library
     ...  browserName: ${browserName},
     ...  platform: ${platform},
     ...  version: ${version},
+    ...  visual: ${visual},
+    ...  network: ${network},
+    ...  console: ${console},
     ...  name: RobotFramework Lambda Test
 
 ${BROWSER}          ${ROBOT_BROWSER}
