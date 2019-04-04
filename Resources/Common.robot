@@ -3,17 +3,16 @@ Library  Selenium2Library
 
 *** Variables ***
 
-@{_tmp} 
-    ...  browserName: %{browserName},
-    ...  platform: %{platform},
-    ...  version: %{version},
+@{_tmp}
+    ...  browserName: ${browserName},
+    ...  platform: ${platform},
+    ...  version: ${version},
     ...  name: RobotFramework Lambda Test
 
-${BROWSER}          %{ROBOT_BROWSER}
-${CAPABILITIES}     ${EMPTY.join(${_tmp})} 
-${KEY}              <YOUR LAMBDATEST USERNAME>:<YOUR LAMBDATEST ACCESS KEY>
+${BROWSER}          ${ROBOT_BROWSER}
+${CAPABILITIES}     ${EMPTY.join(${_tmp})}
+${KEY}              sirajk:oz85RZKxbqX6X8aCQXuQgUDnojP8OwY3wx2SAkEswtgRuxl8n0
 ${REMOTE_URL}       https://${KEY}@hub.lambdatest.com/wd/hub
-
 
 *** Keywords ***
 
