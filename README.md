@@ -23,6 +23,10 @@
 	```
 ### Running Tests
 
+Single Test:
+	```
+	$ make test_Windows_10_chrome_68
+	```
 Tests in Parallel:
 	```
 	$ make run_all_in_parallel
