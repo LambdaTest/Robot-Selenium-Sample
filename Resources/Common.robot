@@ -14,7 +14,7 @@ Library  Selenium2Library
 
 ${BROWSER}          ${ROBOT_BROWSER}
 ${CAPABILITIES}     ${EMPTY.join(${_tmp})}
-${KEY}              sirajk:oz85RZKxbqX6X8aCQXuQgUDnojP8OwY3wx2SAkEswtgRuxl8n0
+${KEY}              YOUR USERNAME:YOUR ACCESS KEY
 ${REMOTE_URL}       https://${KEY}@hub.lambdatest.com/wd/hub
 
 *** Keywords ***
