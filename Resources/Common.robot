@@ -16,10 +16,12 @@ ${BROWSER}          ${ROBOT_BROWSER}
 ${CAPABILITIES}     ${EMPTY.join(${_tmp})}
 ${KEY}              YOUR USERNAME:YOUR ACCESS KEY
 ${REMOTE_URL}       https://${KEY}@hub.lambdatest.com/wd/hub
+${TIMEOUT}          3000
 
 *** Keywords ***
 
 Open test browser
+    [Timeout]   ${TIMEOUT}
     Open browser  https://lambdatest.github.io/sample-todo-app/  browser=${BROWSER}
     ...  remote_url=${REMOTE_URL}
     ...  desired_capabilities=${CAPABILITIES}
