@@ -10,7 +10,7 @@ Test Teardown  Common.Close test browser
 *** Test Cases ***
 
 Example of connecting to Lambdatest via Robot Framework 
-
+	[Timeout]   ${TIMEOUT}
 	Page should contain element  name:li1
 	Page should contain element  name:li2
 
