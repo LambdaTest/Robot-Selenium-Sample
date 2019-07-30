@@ -1,5 +1,6 @@
 *** Settings ***
 Library  Selenium2Library
+Library  LambdaTestStatus.py
 
 *** Variables ***
 
@@ -15,7 +16,7 @@ Library  Selenium2Library
 ${BROWSER}          ${ROBOT_BROWSER}
 ${CAPABILITIES}     ${EMPTY.join(${_tmp})}
 ${KEY}              YOUR USERNAME:YOUR ACCESS KEY
-${REMOTE_URL}       https://${KEY}@hub.lambdatest.com/wd/hub
+${REMOTE_URL}       http://${KEY}@hub.lambdatest.com/wd/hub
 ${TIMEOUT}          3000
 
 *** Keywords ***
@@ -27,4 +28,8 @@ Open test browser
     ...  desired_capabilities=${CAPABILITIES}
 
 Close test browser
+    Run keyword if  '${REMOTE_URL}' != ''
+    ...  Report Lambdatest Status
+    ...  ${TEST_NAME} 
+    ...  ${TEST_STATUS} 
     Close all browsers
