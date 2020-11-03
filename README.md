@@ -8,28 +8,17 @@
 Robot Framework is a generic open source automation framework. It can be used for test automation and robotic process automation (RPA).
 ## Prerequisites for Robot Selenium tutorial 
 
-### 1. Python Installation
+You can find your username and access key here (https://www.lambdatest.com/capabilities-generator/).
 
- * [Download Python](https://www.python.org/downloads/) and click on Add to path and install.
- 
- * To check if python installed correctly you need to go to terminal type python in command prompt. It will show you the current version you have downloaded.
- 
-### 2. LambdaTest Credentials
-  * To obtain a username and access_key, sign up for free [here](https://lambdatest.com). After signing up you can find your username and access key [here](https://accounts.lambdatest.com/detail/profile).
-  
-## Setting Up The Project For Robot Tutorial
+![Username Access](tutorial-images/capability.png)
 
-  * You can download the file. To do this click on Clone or download button. You can download zip file.
-  * Then open the terminal in the folder you want to clone the file. Run the command:
-	
-	``` 
-	git clone https://github.com/LambdaTest/Robot-Selenium-Sample.git
-  	```
-  * After Clone or downloading file you need to setup Robotframework and selenium. To do this you need to open terminal in the project folder and run:
-  
-	```bash
-    pip install -r requirements.txt
-    ```
+
+You can now replace the username and access key here in the `Resources/Common.robot` file: 
+
+```
+http://%{LT_USERNAME}:%{LT_ACCESS_KEY}@hub.lambdatest.com/wd/hub
+```
+
 ## Getting Started With Robot & LambdaTest
 
 Let’ start with a simple Selenium Remote Webdriver test first. The Robot script below tests a simple to-do application with basic functionalities like mark items as done, add items in list, calculate total pending items etc.
@@ -87,8 +76,7 @@ Library  LambdaTestStatus.py
 
 ${BROWSER}          ${ROBOT_BROWSER}
 ${CAPABILITIES}     ${EMPTY.join(${_tmp})}
-${KEY}              YOUR USERNAME:YOUR ACCESS KEY  //Please specify your lambdatest username and access key here
-${REMOTE_URL}       http://${KEY}@hub.lambdatest.com/wd/hub
+${REMOTE_URL}       http://%{LT_USERNAME}:%{LT_ACCESS_KEY}@hub.lambdatest.com/wd/hub //Please specify your lambdatest username and access key here
 ${TIMEOUT}          3000
 
 *** Keywords ***
@@ -119,7 +107,7 @@ make test_Windows_10_chrome_68
 
 ## Parallel testing with Robot
 
-Parallel Testing is one of the most demanding feature of LambdaTest Selenium Grid. By parallel testing, you can run more than one test case, simultaneously. This means that, Parallel testing would allow you to execute numerous automation test cases altogether. So you execute a single test scenario across different browsers or could run different test scenarios across the same browser but with different browser versions. To do this we have makefile whch consists of the following:
+You can configure your parallel tests capabilites at `Makefile`: 
 
 
 ```
@@ -169,12 +157,6 @@ After setting tunnel you can also see the active tunnel in our LambdaTest dashbo
 ![tunnel active](https://github.com/LambdaTest/Robot-Selenium-Sample/blob/master/tutorial-images/tn.PNG)
 
 
-### Important Note:
----
-- Some Safari & IE browsers, doesn't support automatic resolution of the URL string "localhost". Therefore if you test on URLs like "http://localhost/" or "http://localhost:8080" etc, you would get an error in these browsers. A possible solution is to use "localhost.lambdatest.com" or replace the string "localhost" with machine IP address. For example if you wanted to test "http://localhost/dashboard" or, and your machine IP is 192.168.2.6 you can instead test on "http://192.168.2.6/dashboard" or "http://localhost.lambdatest.com/dashboard".
-
-## About LambdaTest
-[LambdaTest](https://www.lambdatest.com/) is a cloud based selenium grid infrastructure that can help you run automated cross browser compatibility tests on 2000+ different browser and operating system environments. LambdaTest supports all programming languages and frameworks that are supported with Selenium, and have easy integrations with all popular CI/CD platforms. It's a perfect solution to bring your [selenium automation testing](https://www.lambdatest.com/selenium-automation) to cloud based infrastructure that not only helps you increase your test coverage over multiple desktop and mobile browsers, but also allows you to cut down your test execution time by running tests on parallel.
 
 ### Resources
 
