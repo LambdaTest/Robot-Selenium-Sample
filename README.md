@@ -97,6 +97,11 @@ Close test browser
 
 ### Execute The Test
 
+Install dependencies first
+```
+pip install -r requirements.txt
+```
+
 You would need to execute the below command in your terminal/cmd.
 
 ```
