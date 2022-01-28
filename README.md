@@ -1,171 +1,85 @@
 # Robot Selenium tutorial
 
-![LambdaTest Logo](https://www.lambdatest.com/static/images/logo.svg)
+![MSTest](https://opengraph.githubassets.com/2c360fc18f231a79e77ba4561d19e646703ad6be23ac9ff67eb6fde574c942eb/LambdaTest/Robot-Selenium-Sample)
 
+## Prerequisites
 
-![altext](https://github.com/LambdaTest/Robot-Selenium-Sample/blob/master/tutorial-images/logo.PNG)
-
-Robot Framework is a generic open source automation framework. It can be used for test automation and robotic process automation (RPA).
-## Prerequisites for Robot Selenium tutorial 
-
-You can find your username and access key here (https://www.lambdatest.com/capabilities-generator/).
-
-![Username Access](tutorial-images/capability.png)
-
-
-You can now replace the username and access key here in the `Resources/Common.robot` file: 
+1. Install pip and python.
 
 ```
-http://%{LT_USERNAME}:%{LT_ACCESS_KEY}@hub.lambdatest.com/wd/hub
+sudo apt install python-pip
+sudo apt install python
 ```
 
-## Getting Started With Robot & LambdaTest
-
-Let’ start with a simple Selenium Remote Webdriver test first. The Robot script below tests a simple to-do application with basic functionalities like mark items as done, add items in list, calculate total pending items etc.
-
-Feature: Test to add item Scenario: Test sample-todo-app Given I go to sample-todo-app to add item Then I Click on first checkbox and second checkbox When I enter item to add When I click add button Then I should verify the added item
-
-Now here is the sample test file which is to be executed for the automation test through LambdaTest
-
+2. The recommended way to run your tests would be in virtualenv. It will isolate the build from other setups you may have running and ensure that the tests run with the specified versions of the modules specified in the requirements.txt file.
 
 ```
-*** Settings ***
-
-Resource  ../Resources/Common.robot
-
-Test Setup  Common.Open test browser
-Test Teardown  Common.Close test browser
- 
-*** Variables ***
-
-*** Test Cases ***
-
-Example of connecting to Lambdatest via Robot Framework 
-	[Timeout]   ${TIMEOUT}
-	Page should contain element  name:li1
-	Page should contain element  name:li2
-
-	Click button  name:li1	
-	Click button  name:li2	
-		
-	Input text  id:sampletodotext  Yey Let's add it to list
-	Click button  id:addbutton
-	${response}    Get Text    xpath=/html/body/div/div/div/ul/li[6]/span
-	Should Be Equal As Strings    ${response}    Yey Let's add it to list
+pip install virtualenv
 ```
 
+## Steps to Run your First Test
 
-Here is common.robot file to setup mandatory details to run at LambdaTest.
-You would need to your LambdaTest authentication credentials(Access key & Username). You need to update these credentials in the /Resources/Common.robot file.
+Step 1. Clone the Python-Pytest-Selenium Repository.
 
 ```
-*** Settings ***
-Library  Selenium2Library
-Library  LambdaTestStatus.py
-
-*** Variables ***
-
-@{_tmp}
-    ...  browserName: ${browserName},
-    ...  platform: ${platform},
-    ...  version: ${version},
-    ...  visual: ${visual},
-    ...  network: ${network},
-    ...  console: ${console},
-    ...  name: RobotFramework Lambda Test
-
-${BROWSER}          ${ROBOT_BROWSER}
-${CAPABILITIES}     ${EMPTY.join(${_tmp})}
-${REMOTE_URL}       http://%{LT_USERNAME}:%{LT_ACCESS_KEY}@hub.lambdatest.com/wd/hub //Please specify your lambdatest username and access key here
-${TIMEOUT}          3000
-
-*** Keywords ***
-
-Open test browser
-    [Timeout]   ${TIMEOUT}
-    Open browser  https://lambdatest.github.io/sample-todo-app/  browser=${BROWSER}
-    ...  remote_url=${REMOTE_URL}
-    ...  desired_capabilities=${CAPABILITIES}
-
-Close test browser
-    Run keyword if  '${REMOTE_URL}' != ''
-    ...  Report Lambdatest Status
-    ...  ${TEST_NAME} 
-    ...  ${TEST_STATUS} 
-    Close all browsers
+git clone https://github.com/LambdaTest/Robot-Selenium-Sample
 ```
 
-### Execute The Test
+Step 2. Next we create and Activate the virtual environment in the Python-Pytest-Selenium folder.
 
-Install dependencies first
+```
+virtualenv venv
+source venv/bin/activate
+```
+
+Step 3. Then install required packages.
+
 ```
 pip install -r requirements.txt
 ```
 
-You would need to execute the below command in your terminal/cmd.
+Step 4. Inside Python-Pytest-Selenium folder, export the Lambda-test Credentials. You can get these from your automation dashboard.
 
+<p align="center">
+   <b>For Linux/macOS:</b>
+   
+```
+export LT_USERNAME="YOUR_USERNAME"
+export LT_ACCESS_KEY="YOUR ACCESS KEY"
+```
+<p align="center">
+   <b>For Windows:</b>
+```
+set LT_USERNAME="YOUR_USERNAME"
+set LT_ACCESS_KEY="YOUR ACCESS KEY"
+```
+Step 5. To run your first test.
 ```
 make test_Windows_10_chrome_68
 ```
-
-![rfst](https://github.com/LambdaTest/Robot-Selenium-Sample/blob/master/tutorial-images/rfst.PNG)
-
-## Parallel testing with Robot
-
-You can configure your parallel tests capabilites at `Makefile`: 
-
-
+Step 6. To run parallel test.
 ```
-run_all_in_parallel:
-	make -j test_Windows_10_edge_18 test_OX_X_10_11_firefox_59 test_Windows_10_chrome_68
-
-test_Windows_10_edge_18:
-	robot  --variable platform:"Windows 10" --variable browserName:MicrosoftEdge --variable version:18.0 --variable ROBOT_BROWSER:chrome --variable visual:false --variable network:false --variable console:false Tests/sample_test.robot
-
-test_OX_X_10_11_firefox_59:
-	robot --variable platform:"macOS Sierra" --variable browserName:firefox --variable version:59.0 --variable ROBOT_BROWSER:firefox --variable visual:false --variable network:false --variable console:false Tests/sample_test.robot
-
-test_Windows_10_chrome_68:
-	robot --variable platform:"Windows 10" --variable browserName:chrome --variable version:68.0 --variable ROBOT_BROWSER:chrome --variable visual:false --variable network:false --variable console:false Tests/sample_test.robot
-	
+ make run_all_in_parallel
 ```
 
+## See the Results
 
-To perform parallel testing on LambdaTest Selenium grid use the below command:
+You can see the results of the test on Lambdatest [Automation Dashboard](https://automation.lambdatest.com/build)
+![Dashboard](https://github.com/LambdaTest/Robot-Selenium-Sample/blob/master/tutorial-images/rfsample.PNG)
 
-
-```
-make run_all_in_parallel
-```
-
-![rfpt](https://github.com/LambdaTest/Robot-Selenium-Sample/blob/master/tutorial-images/rfpt.PNG)
-
-
-Below we see a screenshot that depicts our Robot code is running over different browsers i.e Chrome, Firefox and Safari on the LambdaTest Selenium Grid Platform. The results of the test script execution along with the logs can be accessed from the LambdaTest Automation dashboard.
-
-![rfsample](https://github.com/LambdaTest/Robot-Selenium-Sample/blob/master/tutorial-images/rfsample.PNG)
-
-
-##  Testing Locally Hosted or Privately Hosted Projects
+## Testing Locally Hosted or Privately Hosted Projects
 
 To help you perform cross browser testing of your locally stored web pages, LambdaTest provides an SSH(Secure Shell) tunnel connection with the name Lambda Tunnel. With Lambda Tunnel, you can test your locally hosted files before you make them live over the internet. You could even perform cross browser testing from different IP addresses belonging to various geographic locations. You can also use LambdaTest Tunnel to test web-apps and websites that are permissible inside your corporate firewall.
 
-* Set tunnel value to True in test capabilities
-> OS specific instructions to download and setup tunnel binary can be found at the following links.
->    - [Windows](https://www.lambdatest.com/support/docs/display/TD/Local+Testing+For+Windows)
->    - [Mac](https://www.lambdatest.com/support/docs/display/TD/Local+Testing+For+MacOS)
->    - [Linux](https://www.lambdatest.com/support/docs/display/TD/Local+Testing+For+Linux)
+- Set tunnel value to True in test capabilities
+  > OS specific instructions to download and setup tunnel binary can be found at the following links.
+  >
+  > - [Windows](https://www.lambdatest.com/support/docs/display/TD/Local+Testing+For+Windows)
+  > - [Mac](https://www.lambdatest.com/support/docs/display/TD/Local+Testing+For+MacOS)
+  > - [Linux](https://www.lambdatest.com/support/docs/display/TD/Local+Testing+For+Linux)
+  >   After setting tunnel you can also see the active tunnel in our LambdaTest dashboard:
+  >   ![tunnel active](https://github.com/LambdaTest/Robot-Selenium-Sample/blob/master/tutorial-images/tn.PNG)
 
-After setting tunnel you can also see the active tunnel in our LambdaTest dashboard:
+## About LambdaTest
 
-
-![tunnel active](https://github.com/LambdaTest/Robot-Selenium-Sample/blob/master/tutorial-images/tn.PNG)
-
-
-
-### Resources
-
-##### [Selenium Documentation](http://www.seleniumhq.org/docs/)
-
-##### [Python Documentation](https://docs.python.org/2.7/)
-
+[LambdaTest](https://www.lambdatest.com/) is a cloud based selenium grid infrastructure that can help you run automated cross browser compatibility tests on 2000+ different browser and operating system environments. LambdaTest supports all programming languages and frameworks that are supported with Selenium, and have easy integrations with all popular CI/CD platforms. It's a perfect solution to bring your [selenium automation testing](https://www.lambdatest.com/selenium-automation) to cloud based infrastructure that not only helps you increase your test coverage over multiple desktop and mobile browsers, but also allows you to cut down your test execution time by running tests on parallel.
