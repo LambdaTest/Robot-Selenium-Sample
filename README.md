@@ -27,9 +27,16 @@ git clone https://github.com/LambdaTest/Robot-Selenium-Sample
 
 Step 2. Next we create and Activate the virtual environment in the Python-Pytest-Selenium folder.
 
+For Linux/MacOS
 ```
 virtualenv venv
 source venv/bin/activate
+```
+
+For Windows
+```
+python -m virtualenv venv
+venv\Scripts\activate.bat
 ```
 
 Step 3. Then install required packages.
@@ -53,11 +60,15 @@ export LT_ACCESS_KEY="YOUR ACCESS KEY"
 set LT_USERNAME="YOUR_USERNAME"
 set LT_ACCESS_KEY="YOUR ACCESS KEY"
 ```
+
 Step 5. To run your first test.
+
 ```
-make test_Windows_10_chrome_68
+make test_Windows_10_chrome_latest
 ```
+
 Step 6. To run parallel test.
+
 ```
  make run_all_in_parallel
 ```
