@@ -19,13 +19,13 @@ pip install virtualenv
 
 ## Steps to Run your First Test
 
-Step 1. Clone the Python-Pytest-Selenium Repository.
+Step 1. Clone the Robot-Selenium-Sample Repository.
 
 ```
 git clone https://github.com/LambdaTest/Robot-Selenium-Sample
 ```
 
-Step 2. Next we create and Activate the virtual environment in the Python-Pytest-Selenium folder.
+Step 2. Next we create and Activate the virtual environment in the Robot-Selenium-Sample folder.
 
 For Linux/MacOS
 ```
@@ -45,7 +45,7 @@ Step 3. Then install required packages.
 pip install -r requirements.txt
 ```
 
-Step 4. Inside Python-Pytest-Selenium folder, export the Lambda-test Credentials. You can get these from your automation dashboard.
+Step 4. Inside Robot-Selenium-Sample folder, export the Lambda-test Credentials. You can get these from your automation dashboard.
 
 <p align="center">
    <b>For Linux/macOS:</b>
