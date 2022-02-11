@@ -15,7 +15,7 @@ Library  LambdaTestStatus.py
 
 ${BROWSER}          ${ROBOT_BROWSER}
 ${CAPABILITIES}     ${EMPTY.join(${_tmp})}
-${REMOTE_URL}       http://%{srivishnua}:%{lRPrFiIHat1GfMOOMISoBEcyPoa9XsABtLjAGw4flFgW2PjG1P}@hub.lambdatest.com/wd/hub
+${REMOTE_URL}       http://%{LT_USERNAME}:%{LT_ACCESS_KEY}@hub.lambdatest.com/wd/hub
 ${TIMEOUT}          3000
 
 *** Keywords ***
