@@ -56,6 +56,7 @@ export LT_ACCESS_KEY="YOUR ACCESS KEY"
 ```
 <p align="center">
    <b>For Windows:</b>
+   
 ```
 set LT_USERNAME="YOUR_USERNAME"
 set LT_ACCESS_KEY="YOUR ACCESS KEY"
