@@ -4,17 +4,10 @@ Library  LambdaTestStatus.py
 
 *** Variables ***
 
-@{_tmp}
-    ...  browserName: ${browserName},
-    ...  platform: ${platform},
-    ...  version: ${version},
-    ...  visual: ${visual},
-    ...  network: ${network},
-    ...  console: ${console},
-    ...  name: RobotFramework Lambda Test
 
 ${BROWSER}          ${ROBOT_BROWSER}
-${CAPABILITIES}     ${EMPTY.join(${_tmp})}
+&{options}          browserName=${browserName}     platform=${platform}       version=${version}        visual=${visual}       network=${network}        console=${console}      name=RobotFramework Lambda Test    buildName=Robot Build
+&{CAPABILITIES}     LT:Options=&{options}
 ${REMOTE_URL}       http://%{LT_USERNAME}:%{LT_ACCESS_KEY}@hub.lambdatest.com/wd/hub
 ${TIMEOUT}          3000
 
