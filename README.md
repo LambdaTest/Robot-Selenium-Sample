@@ -50,15 +50,8 @@ pip install virtualenv
 git clone https://github.com/LambdaTest/Robot-Selenium-Sample
 cd Robot-Selenium-Sample
 ```
-**Step 2:** Create a virtual environment in your project folder the environment name is arbitrary.
-```bash
-virtualenv venv
-```
-**Step 3:** Activate the environment.
-```bash
-source venv/bin/activate
-```
-**Step 4:** Install the [required packages](https://github.com/LambdaTest/Robot-Selenium-Sample/blob/master/requirements.txt) from the cloned project directory:
+venv/bin/activate
+**Step 2:** Install the [required packages](https://github.com/LambdaTest/Robot-Selenium-Sample/blob/master/requirements.txt) from the cloned project directory:
 
 ```bash
 pip install -r requirements.txt
@@ -68,7 +61,7 @@ pip install -r requirements.txt
 
 Make sure you have your LambdaTest credentials with you to run test automation scripts. You can get these credentials from the [LambdaTest Automation Dashboard](https://automation.lambdatest.com/build/?utm_source=github&utm_medium=repo&utm_campaign=robot-selenium-sample) or by your [LambdaTest Profile](https://accounts.lambdatest.com/login/?utm_source=github&utm_medium=repo&utm_campaign=robot-selenium-sample).
 
-**Step 5:** Set LambdaTest **Username** and **Access Key** in environment variables.
+**Step 3:** Set LambdaTest **Username** and **Access Key** in environment variables.
 
 * For **Linux/macOS**:
   
@@ -91,7 +84,7 @@ You can generate capabilities for your test requirements with the help of our [D
 
 ### Executing the Test 
 
-**Step 6:** Please execute the command below to run your tests:
+**Step 4:** Please execute the command below to run your tests:
 ```bash
 Please execute the command below to run your tests:
 ```
