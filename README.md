@@ -37,11 +37,7 @@ Before you can start performing Python automation testing using Robot, you would
 * Install the latest Python build from the [official website](https://www.python.org/downloads/). We recommend using the latest version.
 * Make sure **pip** is installed in your system. You can install **pip** from [here](https://pip.pypa.io/en/stable/installation/)(use **pip3** command if you are using python3).
 * Download the latest **Selenium Client** and its **WebDriver bindings** from the [official website](https://www.selenium.dev/downloads/). Latest versions of **Selenium Client** and **WebDriver** are ideal for running your automation script on LambdaTest Selenium cloud grid.
-* Install **virtualenv** which is the recommended way to run your tests. It will isolate the build from other setups you may have running and ensure that the tests run with the specified versions of the modules.
 
-```bash
-pip install virtualenv
-```
 ### Installing Selenium Dependencies And Tutorial Repo
 
 **Step 1:** Clone the LambdaTest’s Robot-Selenium-Sample repository and navigate to the code directory as shown below:
@@ -50,7 +46,7 @@ pip install virtualenv
 git clone https://github.com/LambdaTest/Robot-Selenium-Sample
 cd Robot-Selenium-Sample
 ```
-venv/bin/activate
+
 **Step 2:** Install the [required packages](https://github.com/LambdaTest/Robot-Selenium-Sample/blob/master/requirements.txt) from the cloned project directory:
 
 ```bash
@@ -86,7 +82,7 @@ You can generate capabilities for your test requirements with the help of our [D
 
 **Step 4:** Please execute the command below to run your tests:
 ```bash
-Please execute the command below to run your tests:
+make test_Windows_10_chrome_latest
 ```
 Your test results would be displayed on the test console (or command-line interface if you are using terminal/cmd) and on LambdaTest automation dashboard. [LambdaTest Automation Dashboard](https://automation.lambdatest.com/build/?utm_source=github&utm_medium=repo&utm_campaign=robot-selenium-sample) will help you view all your text logs, screenshots and video recording for your entire automation tests.
 
