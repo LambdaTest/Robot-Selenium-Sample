@@ -4,7 +4,7 @@ Library  LambdaTestStatus.py
 
 *** Variables ***
 ${BROWSER}          ${ROBOT_BROWSER}
-&{lt_options}       browserName=${browserName}     platform=${platform}       version=${version}        visual=${visual}       network=${network}        console=${console}      name=RobotFramework Lambda Test    buildName=Robot Build
+&{lt_options}       browserName=${browserName}      name=RobotFramework Lambda Test    buildName=Robot Build
 ${REMOTE_URL}       http://%{LT_USERNAME}:%{LT_ACCESS_KEY}@hub.lambdatest.com/wd/hub
 ${TIMEOUT}          3000
 
