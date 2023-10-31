@@ -3,25 +3,24 @@ Library  SeleniumLibrary
 Library  LambdaTestStatus.py
 
 *** Variables ***
-
-
 ${BROWSER}          ${ROBOT_BROWSER}
-&{options}          browserName=${browserName}     platform=${platform}       version=${version}        visual=${visual}       network=${network}        console=${console}      name=RobotFramework Lambda Test    buildName=Robot Build
-&{CAPABILITIES}     LT:Options=&{options}
+&{lt_options}       browserName=${browserName}     platform=${platform}       version=${version}        visual=${visual}       network=${network}        console=${console}      name=RobotFramework Lambda Test    buildName=Robot Build
 ${REMOTE_URL}       http://%{LT_USERNAME}:%{LT_ACCESS_KEY}@hub.lambdatest.com/wd/hub
 ${TIMEOUT}          3000
 
 *** Keywords ***
-
 Open test browser
     [Timeout]   ${TIMEOUT}
-    Open browser  https://lambdatest.github.io/sample-todo-app/  browser=${BROWSER}
-    ...  remote_url=${REMOTE_URL}
-    ...  desired_capabilities=${CAPABILITIES}
+    ${options}=    Evaluate    sys.modules['selenium.webdriver'].${BROWSER}Options()    sys, selenium.webdriver
+    Call Method    ${options}    set_capability    LT:Options    ${lt_options}
+    Open Browser    https://lambdatest.github.io/sample-todo-app/
+    ...    browser=${BROWSER}
+    ...    remote_url=${REMOTE_URL}
+    ...    options=${options}
 
 Close test browser
-    Run keyword if  '${REMOTE_URL}' != ''
-    ...  Report Lambdatest Status
-    ...  ${TEST_NAME} 
-    ...  ${TEST_STATUS} 
-    Close all browsers
+    Run keyword if    '${REMOTE_URL}' != ''
+    ...    Report Lambdatest Status
+    ...    ${TEST_NAME}
+    ...    ${TEST_STATUS}
+    Close All Browsers

@@ -2,7 +2,7 @@ import os
 from robot.libraries.BuiltIn import BuiltIn
 
 def report_lambdatest_status(name, status):
-    selenium = BuiltIn().get_library_instance('Selenium2Library')
+    selenium = BuiltIn().get_library_instance('SeleniumLibrary')
 
     # Mark test status pass/failed
     lambda_status = "passed"  if status=="PASS" else "failed"
