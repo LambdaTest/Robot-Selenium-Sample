@@ -7,6 +7,7 @@ ${BROWSER}          ${ROBOT_BROWSER}
 &{lt_options}       browserName=${browserName}      name=RobotFramework Lambda Test    buildName=Robot Build
 ${REMOTE_URL}       http://%{LT_USERNAME}:%{LT_ACCESS_KEY}@hub.lambdatest.com/wd/hub
 ${TIMEOUT}          30000
+${IMPLICIT_WAIT}    9seconds
 
 *** Keywords ***
 Open test browser
@@ -17,6 +18,7 @@ Open test browser
     ...    browser=${BROWSER}
     ...    remote_url=${REMOTE_URL}
     ...    options=${options}
+    Set Selenium Implicit Wait    ${IMPLICIT_WAIT}
 
 Close test browser
     Run keyword if    '${REMOTE_URL}' != ''
