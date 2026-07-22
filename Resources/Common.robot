@@ -14,7 +14,7 @@ Open test browser
     [Timeout]   ${TIMEOUT}
     ${options}=    Evaluate    sys.modules['selenium.webdriver'].${BROWSER}Options()    sys, selenium.webdriver
     Call Method    ${options}    set_capability    LT:Options    ${lt_options}
-    Open Browser    https://lambdatest.github.io/sample-todo-app/
+    Open Browser    https://www.testmuai.com/selenium-playground/todo-app/
     ...    browser=${BROWSER}
     ...    remote_url=${REMOTE_URL}
     ...    options=${options}
